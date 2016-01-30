@@ -1,14 +1,15 @@
-Floating point rounding error estimation library
+# Floating point rounding error estimation library
 
-Author:	Vasilis.Vlachoudis@cern.ch
-Date:	29-Jan-2016
+Author:	**Vasilis.Vlachoudis@cern.ch**
+
+Date:	**29-Jan-2016**
 
 A template number class for estimating the floating point rounding
 errors introduced in operations
 
 Replace all variables with
-     `float  -> Float`
-     `double -> Double`
+- `float  -> Float`
+- `double -> Double`
 
 The code will double all operations once in the type used (float/double)
 and once in "long double" precision.
