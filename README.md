@@ -16,6 +16,11 @@ At any moment you can inspect the error of the operation
 
 e.g.
 ```
+#include <iostream>
+#include <fperror.h>
+
+int main(int, char**)
+{
      Float a = 100.00001f;
      Float b = 100.0f;
 
@@ -23,7 +28,18 @@ e.g.
      Float c = a*a - b*b;		// - introduces a catastrophic cancellation
      Float d = (a+b)*(a-b);		// +/- introduces a benign cancellation
 
-     c.dump(cout,"c=") << endl;
-     d.dump(cout,"d=") << endl;
+     c.dump(std::cout,"c=") << std::endl;
+     d.dump(std::cout,"d=") << std::endl;
+     return 0;
+}
 ```
-
+Compile and run:
+```
+$ make test
+g++ -o test test.cc -Wall -I.. -O3
+$ ./test
+c=f:0.001953125        r:0.0015258789644576609134674072265625                     e:0.000427246036
+d=f:0.00152587890625   r:0.0015258789644576609134674072265625                     e:-5.82076609e-11
+```
+It is visible that the error introduced by the first operation is dramatic
+compared to the second.
